@@ -11,6 +11,15 @@ import {
   Plus,
   Music2,
   Github,
+  Search,
+  Mic2,
+  Car,
+  Layers,
+  Headphones,
+  Smartphone,
+  ChevronRight,
+  Heart,
+  Play,
 } from "lucide-react";
 
 const VIDEO =
@@ -19,6 +28,23 @@ const VIDEO =
 const APK_URL =
   "https://github.com/shnwazdeveloper/lyra-music/releases/download/lyra-v3.0.1/Lyra-Music.apk";
 const REPO_URL = "https://github.com/shnwazdeveloper/lyra-music";
+const RELEASES_URL = "https://github.com/shnwazdeveloper/lyra-music/releases/latest";
+
+const features = [
+  { Icon: Search, title: "Universal Search", desc: "Find songs, videos, albums, and playlists in one place." },
+  { Icon: Music2, title: "Background Playback", desc: "Stream uninterrupted while you do everything else." },
+  { Icon: Download, title: "Offline Downloads", desc: "Save tracks locally and listen without a connection." },
+  { Icon: Mic2, title: "Synced Lyrics", desc: "Sing along with lyrics rendered as the song plays." },
+  { Icon: Layers, title: "Library & Playlists", desc: "Organize your music with smart, simple controls." },
+  { Icon: Car, title: "Android Auto", desc: "Native media controls and Android Auto support." },
+];
+
+const stats = [
+  { k: "100%", v: "Open source" },
+  { k: "0", v: "Ads, ever" },
+  { k: "6.0+", v: "Android" },
+  { k: "v3.0.1", v: "Latest release" },
+];
 
 function Logo({ size = 32 }: { size?: number }) {
   return (
@@ -33,172 +59,358 @@ function Logo({ size = 32 }: { size?: number }) {
 
 export function LyraSite() {
   return (
-    <main className="relative min-h-screen w-full overflow-hidden bg-black text-white">
-      <video
-        src={VIDEO}
-        autoPlay
-        muted
-        loop
-        playsInline
-        className="absolute inset-0 z-0 h-full w-full object-cover"
-      />
+    <main className="relative w-full bg-black text-white">
+      {/* HERO with looping video */}
+      <section className="relative w-full overflow-hidden">
+        <video
+          src={VIDEO}
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 z-0 h-full w-full object-cover"
+        />
 
-      <div className="relative z-10 flex min-h-screen w-full flex-col lg:flex-row">
-        {/* LEFT PANEL */}
-        <div className="relative flex w-full flex-1 lg:w-[52%]">
-          <div className="liquid-glass-strong absolute inset-4 rounded-3xl lg:inset-6" />
-          <div className="relative flex w-full flex-col p-6 sm:p-10 lg:p-12">
-            {/* Nav */}
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <Logo size={32} />
-                <span className="text-2xl font-semibold tracking-tighter text-white">lyra</span>
+        <div className="relative z-10 flex min-h-screen w-full flex-col lg:flex-row">
+          {/* LEFT */}
+          <div className="relative flex w-full flex-1 lg:w-[52%]">
+            <div className="liquid-glass-strong absolute inset-3 rounded-3xl sm:inset-4 lg:inset-6" />
+            <div className="relative flex w-full flex-col p-5 sm:p-8 lg:p-12">
+              {/* Nav */}
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <Logo size={32} />
+                  <span className="text-xl font-semibold tracking-tighter text-white sm:text-2xl">
+                    lyra
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <a
+                    href={REPO_URL}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="liquid-glass hidden h-10 w-10 items-center justify-center rounded-full text-white transition-transform hover:scale-105 sm:flex"
+                  >
+                    <Github className="h-4 w-4" />
+                  </a>
+                  <button className="liquid-glass inline-flex items-center gap-2 rounded-full px-3 py-2 text-xs text-white/80 transition-transform hover:scale-105 sm:px-4 sm:text-sm">
+                    <Menu className="h-4 w-4" /> Menu
+                  </button>
+                </div>
               </div>
-              <button className="liquid-glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm text-white/80 transition-transform hover:scale-105">
-                <Menu className="h-4 w-4" /> Menu
+
+              {/* Center hero */}
+              <div className="flex flex-1 flex-col items-center justify-center py-12 text-center">
+                <Logo size={72} />
+                <h1 className="mt-6 text-4xl font-medium tracking-[-0.05em] text-white sm:text-5xl md:text-6xl lg:text-7xl">
+                  Innovating the
+                  <br />
+                  <em className="font-serif font-medium not-italic italic text-white/80">
+                    spirit of
+                  </em>{" "}
+                  lyra music
+                </h1>
+
+                <a
+                  href={APK_URL}
+                  className="liquid-glass-strong mt-8 inline-flex items-center gap-3 rounded-full px-5 py-3 text-sm text-white transition-transform hover:scale-105 active:scale-95"
+                >
+                  <span>Download APK</span>
+                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/15">
+                    <Download className="h-3.5 w-3.5" />
+                  </span>
+                </a>
+
+                <div className="mt-5 flex flex-wrap items-center justify-center gap-2">
+                  {["Material You", "Offline Library", "Synced Lyrics"].map((p) => (
+                    <span
+                      key={p}
+                      className="liquid-glass rounded-full px-3 py-1.5 text-[11px] text-white/80 sm:text-xs"
+                    >
+                      {p}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Bottom quote */}
+              <div className="text-center">
+                <p className="text-[10px] uppercase tracking-widest text-white/50 sm:text-xs">
+                  Visionary Design
+                </p>
+                <p className="mt-2 text-base text-white sm:mt-3 sm:text-2xl">
+                  <span>"We imagined a sound with </span>
+                  <em className="font-serif font-medium italic text-white/80">no ending</em>
+                  <span>."</span>
+                </p>
+                <div className="mt-3 flex items-center justify-center gap-3 text-[10px] uppercase tracking-widest text-white/60 sm:text-xs">
+                  <span className="h-px w-8 bg-white/30 sm:w-10" />
+                  Marcus Aurelio
+                  <span className="h-px w-8 bg-white/30 sm:w-10" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* RIGHT — desktop only */}
+          <div className="relative hidden w-[48%] flex-col gap-4 p-6 lg:flex">
+            <div className="flex items-center justify-between">
+              <div className="liquid-glass flex items-center gap-3 rounded-full px-4 py-2">
+                <a href="#" className="text-white transition-colors hover:text-white/80">
+                  <Twitter className="h-4 w-4" />
+                </a>
+                <a href="#" className="text-white transition-colors hover:text-white/80">
+                  <Linkedin className="h-4 w-4" />
+                </a>
+                <a href="#" className="text-white transition-colors hover:text-white/80">
+                  <Instagram className="h-4 w-4" />
+                </a>
+                <span className="mx-1 h-4 w-px bg-white/20" />
+                <a
+                  href={REPO_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-white transition-colors hover:text-white/80"
+                >
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+              </div>
+              <button className="liquid-glass flex h-10 w-10 items-center justify-center rounded-full text-white transition-transform hover:scale-105">
+                <Sparkles className="h-4 w-4" />
               </button>
             </div>
 
-            {/* Center hero */}
-            <div className="flex flex-1 flex-col items-center justify-center text-center">
-              <Logo size={80} />
-              <h1 className="mt-6 text-5xl font-medium tracking-[-0.05em] text-white sm:text-6xl lg:text-7xl">
-                Innovating the
-                <br />
-                <em className="font-serif font-medium not-italic text-white/80 italic">
-                  spirit of
-                </em>{" "}
-                lyra music
-              </h1>
+            <div className="liquid-glass w-56 rounded-2xl p-4">
+              <h3 className="text-sm font-medium text-white">Enter our ecosystem</h3>
+              <p className="mt-1 text-xs text-white/60">
+                Join thousands of listeners shaping the next generation of mobile audio.
+              </p>
+            </div>
 
+            <div className="liquid-glass mt-auto rounded-[2.5rem] p-4">
+              <div className="grid grid-cols-2 gap-3">
+                <div className="liquid-glass rounded-3xl p-5">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10">
+                    <Wand2 className="h-4 w-4 text-white" />
+                  </div>
+                  <h4 className="mt-4 text-sm font-medium text-white">Processing</h4>
+                  <p className="mt-1 text-xs text-white/60">
+                    Real-time audio refinement on device.
+                  </p>
+                </div>
+                <div className="liquid-glass rounded-3xl p-5">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10">
+                    <BookOpen className="h-4 w-4 text-white" />
+                  </div>
+                  <h4 className="mt-4 text-sm font-medium text-white">Sound Archive</h4>
+                  <p className="mt-1 text-xs text-white/60">
+                    Every track, lyric, and playlist — searchable.
+                  </p>
+                </div>
+              </div>
+
+              <div className="liquid-glass mt-3 flex items-center gap-3 rounded-3xl p-3">
+                <div className="liquid-glass-strong flex h-16 w-24 shrink-0 items-center justify-center rounded-2xl">
+                  <Music2 className="h-6 w-6 text-white" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <h4 className="truncate text-sm font-medium text-white">
+                    Advanced Sound Sculpting
+                  </h4>
+                  <p className="truncate text-xs text-white/60">
+                    Shape tone, lyrics, and form with intent.
+                  </p>
+                </div>
+                <button className="liquid-glass flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-white transition-transform hover:scale-105">
+                  <Plus className="h-4 w-4" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* STATS */}
+      <section className="border-y border-white/10 bg-black px-5 py-10 sm:py-14">
+        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-6 text-center sm:grid-cols-4">
+          {stats.map(({ k, v }) => (
+            <div key={v}>
+              <p className="text-3xl font-medium tracking-tight sm:text-4xl">{k}</p>
+              <p className="mt-1 text-xs text-white/50 sm:text-sm">{v}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* FEATURES */}
+      <section className="bg-black px-5 py-16 sm:px-8 sm:py-24">
+        <div className="mx-auto max-w-6xl">
+          <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/50 sm:text-xs">
+            Features
+          </p>
+          <h2 className="mt-3 max-w-2xl text-balance text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl">
+            Everything a music app should be —
+            <br className="hidden sm:inline" />{" "}
+            <em className="font-serif italic text-white/70">nothing it shouldn't.</em>
+          </h2>
+
+          <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {features.map(({ Icon, title, desc }) => (
+              <div
+                key={title}
+                className="liquid-glass rounded-3xl p-5 transition-transform hover:scale-[1.02] sm:p-6"
+              >
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10">
+                  <Icon className="h-5 w-5 text-white" />
+                </div>
+                <h3 className="mt-5 text-base font-medium sm:text-lg">{title}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-white/60">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PREVIEW / now-playing mock */}
+      <section className="bg-black px-5 pb-16 sm:px-8 sm:pb-24">
+        <div className="mx-auto grid max-w-6xl items-center gap-8 lg:grid-cols-2">
+          <div>
+            <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/50 sm:text-xs">
+              Now Playing
+            </p>
+            <h2 className="mt-3 text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl">
+              Music that follows
+              <br />
+              <em className="font-serif italic text-white/70">your every move.</em>
+            </h2>
+            <p className="mt-4 max-w-md text-sm text-white/60 sm:text-base">
+              Background playback, lockscreen controls, Android Auto, and a Material You
+              palette that adapts to your wallpaper.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
               <a
                 href={APK_URL}
-                className="liquid-glass-strong mt-10 inline-flex items-center gap-3 rounded-full px-6 py-3 text-sm text-white transition-transform hover:scale-105 active:scale-95"
+                className="liquid-glass-strong inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm text-white transition-transform hover:scale-105"
               >
-                <span>Explore Now</span>
-                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/15">
-                  <Download className="h-3.5 w-3.5" />
-                </span>
+                <Download className="h-4 w-4" /> Get the APK
               </a>
-
-              <div className="mt-6 flex flex-wrap items-center justify-center gap-2">
-                {["Material You", "Offline Library", "Synced Lyrics"].map((p) => (
-                  <span
-                    key={p}
-                    className="liquid-glass rounded-full px-4 py-1.5 text-xs text-white/80"
-                  >
-                    {p}
-                  </span>
-                ))}
-              </div>
+              <a
+                href={RELEASES_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="liquid-glass inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm text-white transition-transform hover:scale-105"
+              >
+                Releases <ChevronRight className="h-4 w-4" />
+              </a>
             </div>
+          </div>
 
-            {/* Bottom quote */}
-            <div className="text-center">
-              <p className="text-xs uppercase tracking-widest text-white/50">
-                Visionary Design
-              </p>
-              <p className="mt-3 text-xl text-white sm:text-2xl">
-                <span>"We imagined a sound with </span>
-                <em className="font-serif font-medium italic text-white/80">no ending</em>
-                <span>."</span>
-              </p>
-              <div className="mt-3 flex items-center justify-center gap-3 text-xs uppercase tracking-widest text-white/60">
-                <span className="h-px w-10 bg-white/30" />
-                Marcus Aurelio
-                <span className="h-px w-10 bg-white/30" />
+          {/* Phone mock */}
+          <div className="mx-auto w-full max-w-xs sm:max-w-sm">
+            <div className="liquid-glass-strong rounded-[2.5rem] p-4">
+              <div className="liquid-glass rounded-[2rem] p-5">
+                <div className="flex items-center justify-between text-[10px] text-white/60">
+                  <span>9:41</span>
+                  <span>Lyra</span>
+                </div>
+                <div className="mt-5 flex items-center justify-center">
+                  <div className="liquid-glass-strong flex h-40 w-40 items-center justify-center rounded-3xl">
+                    <Music2 className="h-12 w-12 text-white/80" />
+                  </div>
+                </div>
+                <div className="mt-5 text-center">
+                  <p className="text-base font-medium">Drift</p>
+                  <p className="text-xs text-white/60">Marcus Aurelio · Realm</p>
+                </div>
+                <div className="mt-4 h-1 w-full rounded-full bg-white/10">
+                  <div className="h-full w-2/5 rounded-full bg-white" />
+                </div>
+                <div className="mt-3 flex items-center justify-between text-[10px] text-white/50">
+                  <span>1:42</span>
+                  <span>4:08</span>
+                </div>
+                <div className="mt-5 flex items-center justify-center gap-5">
+                  <button className="liquid-glass flex h-10 w-10 items-center justify-center rounded-full">
+                    <Heart className="h-4 w-4" />
+                  </button>
+                  <button className="liquid-glass-strong flex h-14 w-14 items-center justify-center rounded-full">
+                    <Play className="h-5 w-5 fill-white" />
+                  </button>
+                  <button className="liquid-glass flex h-10 w-10 items-center justify-center rounded-full">
+                    <Mic2 className="h-4 w-4" />
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* RIGHT PANEL — desktop only */}
-        <div className="relative hidden w-[48%] flex-col gap-4 p-6 lg:flex">
-          {/* Top bar */}
-          <div className="flex items-center justify-between">
-            <div className="liquid-glass flex items-center gap-3 rounded-full px-4 py-2">
-              <a href="#" className="text-white transition-colors hover:text-white/80">
-                <Twitter className="h-4 w-4" />
-              </a>
-              <a href="#" className="text-white transition-colors hover:text-white/80">
-                <Linkedin className="h-4 w-4" />
-              </a>
-              <a href="#" className="text-white transition-colors hover:text-white/80">
-                <Instagram className="h-4 w-4" />
-              </a>
-              <span className="mx-1 h-4 w-px bg-white/20" />
-              <a
-                href={REPO_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="text-white transition-colors hover:text-white/80"
-              >
-                <ArrowRight className="h-4 w-4" />
-              </a>
-            </div>
-            <button className="liquid-glass flex h-10 w-10 items-center justify-center rounded-full text-white transition-transform hover:scale-105">
-              <Sparkles className="h-4 w-4" />
-            </button>
-          </div>
-
-          {/* Community card */}
-          <div className="liquid-glass w-56 rounded-2xl p-4">
-            <h3 className="text-sm font-medium text-white">Enter our ecosystem</h3>
-            <p className="mt-1 text-xs text-white/60">
-              Join thousands of listeners shaping the next generation of mobile audio.
-            </p>
-          </div>
-
-          {/* Bottom feature stack */}
-          <div className="liquid-glass mt-auto rounded-[2.5rem] p-4">
-            <div className="grid grid-cols-2 gap-3">
-              <div className="liquid-glass rounded-3xl p-5">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10">
-                  <Wand2 className="h-4 w-4 text-white" />
+      {/* DOWNLOAD CTA */}
+      <section className="bg-black px-5 pb-16 sm:px-8 sm:pb-24">
+        <div className="mx-auto max-w-5xl overflow-hidden rounded-3xl">
+          <div className="liquid-glass-strong relative rounded-3xl p-8 sm:p-14">
+            <div className="flex flex-col items-start gap-8 lg:flex-row lg:items-center lg:justify-between">
+              <div className="max-w-xl">
+                <div className="liquid-glass inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs text-white/70">
+                  <Smartphone className="h-3.5 w-3.5" /> Android 6.0+
                 </div>
-                <h4 className="mt-4 text-sm font-medium text-white">Processing</h4>
-                <p className="mt-1 text-xs text-white/60">
-                  Real-time audio refinement on device.
+                <h2 className="mt-5 text-balance text-3xl font-medium tracking-tight sm:text-4xl">
+                  Take Lyra
+                  <em className="font-serif italic text-white/70"> with you.</em>
+                </h2>
+                <p className="mt-3 text-sm text-white/60 sm:text-base">
+                  Free, open-source, and lightweight. Sideload the APK directly from the
+                  latest GitHub release.
                 </p>
-              </div>
-              <div className="liquid-glass rounded-3xl p-5">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10">
-                  <BookOpen className="h-4 w-4 text-white" />
+                <div className="mt-5 flex items-center gap-3 text-xs text-white/50">
+                  <Headphones className="h-4 w-4" />
+                  Designed for everyday listening.
                 </div>
-                <h4 className="mt-4 text-sm font-medium text-white">Sound Archive</h4>
-                <p className="mt-1 text-xs text-white/60">
-                  Every track, lyric, and playlist — searchable.
-                </p>
               </div>
-            </div>
 
-            <div className="liquid-glass mt-3 flex items-center gap-3 rounded-3xl p-3">
-              <div className="liquid-glass-strong flex h-16 w-24 shrink-0 items-center justify-center rounded-2xl">
-                <Music2 className="h-6 w-6 text-white" />
+              <div className="flex w-full flex-col gap-3 sm:flex-row lg:w-auto lg:flex-col">
+                <a
+                  href={APK_URL}
+                  className="liquid-glass-strong inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium text-white transition-transform hover:scale-105"
+                >
+                  <Download className="h-4 w-4" /> Download APK
+                </a>
+                <a
+                  href={REPO_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="liquid-glass inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-medium text-white transition-transform hover:scale-105"
+                >
+                  <Github className="h-4 w-4" /> View on GitHub
+                </a>
               </div>
-              <div className="min-w-0 flex-1">
-                <h4 className="truncate text-sm font-medium text-white">
-                  Advanced Sound Sculpting
-                </h4>
-                <p className="truncate text-xs text-white/60">
-                  Shape tone, lyrics, and form with intent.
-                </p>
-              </div>
-              <a
-                href={REPO_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="liquid-glass flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-white transition-transform hover:scale-105"
-              >
-                <Github className="h-4 w-4" />
-              </a>
-              <button className="liquid-glass flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-white transition-transform hover:scale-105">
-                <Plus className="h-4 w-4" />
-              </button>
             </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="border-t border-white/10 bg-black px-5 py-10 sm:px-8">
+        <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 text-xs text-white/40 sm:flex-row">
+          <div className="flex items-center gap-2">
+            <Logo size={24} />
+            <span className="font-medium tracking-tight text-white/70">lyra music</span>
+          </div>
+          <p>© {new Date().getFullYear()} Lyra Music · Open source · Based on OpenTune</p>
+          <div className="flex items-center gap-3">
+            <a href={REPO_URL} target="_blank" rel="noreferrer" className="hover:text-white">
+              <Github className="h-4 w-4" />
+            </a>
+            <a href="#" className="hover:text-white">
+              <Twitter className="h-4 w-4" />
+            </a>
+            <a href="#" className="hover:text-white">
+              <Instagram className="h-4 w-4" />
+            </a>
+          </div>
+        </div>
+      </footer>
     </main>
   );
 }
