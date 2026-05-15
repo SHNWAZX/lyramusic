@@ -22,6 +22,7 @@ import {
   Play,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { Reveal } from "./Reveal";
 
 const VIDEO =
   "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260315_073750_51473149-4350-4920-ae24-c8214286f323.mp4";
@@ -211,11 +212,11 @@ export function LyraSite() {
       {/* STATS */}
       <section className="border-y border-white/10 bg-black px-5 py-10 sm:py-14">
         <div className="mx-auto grid max-w-6xl grid-cols-2 gap-6 text-center sm:grid-cols-4">
-          {stats.map(({ k, v }) => (
-            <div key={v}>
+          {stats.map(({ k, v }, i) => (
+            <Reveal key={v} delay={i * 90}>
               <p className="text-3xl font-medium tracking-tight sm:text-4xl">{k}</p>
               <p className="mt-1 text-xs text-white/50 sm:text-sm">{v}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -223,19 +224,22 @@ export function LyraSite() {
       {/* FEATURES */}
       <section id="features" className="scroll-mt-20 bg-black px-5 py-16 sm:px-8 sm:py-24">
         <div className="mx-auto max-w-6xl">
-          <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/50 sm:text-xs">
-            Features
-          </p>
-          <h2 className="mt-3 max-w-2xl text-balance text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl">
-            Everything a music app should be —
-            <br className="hidden sm:inline" />{" "}
-            <em className="font-serif italic text-white/70">nothing it shouldn't.</em>
-          </h2>
+          <Reveal>
+            <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/50 sm:text-xs">
+              Features
+            </p>
+            <h2 className="mt-3 max-w-2xl text-balance text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl">
+              Everything a music app should be —
+              <br className="hidden sm:inline" />{" "}
+              <em className="font-serif italic text-white/70">nothing it shouldn't.</em>
+            </h2>
+          </Reveal>
 
           <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {features.map(({ Icon, title, desc }) => (
-              <div
+            {features.map(({ Icon, title, desc }, i) => (
+              <Reveal
                 key={title}
+                delay={(i % 3) * 100}
                 className="liquid-glass rounded-3xl p-5 transition-transform hover:scale-[1.02] sm:p-6"
               >
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10">
@@ -243,7 +247,7 @@ export function LyraSite() {
                 </div>
                 <h3 className="mt-5 text-base font-medium sm:text-lg">{title}</h3>
                 <p className="mt-1.5 text-sm leading-relaxed text-white/60">{desc}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -252,7 +256,7 @@ export function LyraSite() {
       {/* PREVIEW / now-playing mock */}
       <section id="preview" className="scroll-mt-20 bg-black px-5 pb-16 sm:px-8 sm:pb-24">
         <div className="mx-auto grid max-w-6xl items-center gap-8 lg:grid-cols-2">
-          <div>
+          <Reveal>
             <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/50 sm:text-xs">
               Now Playing
             </p>
@@ -281,17 +285,19 @@ export function LyraSite() {
                 Releases <ChevronRight className="h-4 w-4" />
               </a>
             </div>
-          </div>
+          </Reveal>
 
           {/* Phone mock - playable preview */}
-          <PhonePreview />
+          <Reveal delay={150}>
+            <PhonePreview />
+          </Reveal>
         </div>
       </section>
 
       {/* DOWNLOAD CTA */}
       <section id="download" className="scroll-mt-20 bg-black px-5 pb-16 sm:px-8 sm:pb-24">
         <div className="mx-auto max-w-5xl overflow-hidden rounded-3xl">
-          <div className="liquid-glass-strong relative rounded-3xl p-8 sm:p-14">
+          <Reveal className="liquid-glass-strong relative rounded-3xl p-8 sm:p-14">
             <div className="flex flex-col items-start gap-8 lg:flex-row lg:items-center lg:justify-between">
               <div className="max-w-xl">
                 <div className="liquid-glass inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs text-white/70">
@@ -328,7 +334,7 @@ export function LyraSite() {
                 </a>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
