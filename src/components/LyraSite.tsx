@@ -334,7 +334,7 @@ export function LyraSite() {
                 </a>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
