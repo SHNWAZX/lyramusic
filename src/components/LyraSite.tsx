@@ -212,11 +212,11 @@ export function LyraSite() {
       {/* STATS */}
       <section className="border-y border-white/10 bg-black px-5 py-10 sm:py-14">
         <div className="mx-auto grid max-w-6xl grid-cols-2 gap-6 text-center sm:grid-cols-4">
-          {stats.map(({ k, v }) => (
-            <div key={v}>
+          {stats.map(({ k, v }, i) => (
+            <Reveal key={v} delay={i * 90}>
               <p className="text-3xl font-medium tracking-tight sm:text-4xl">{k}</p>
               <p className="mt-1 text-xs text-white/50 sm:text-sm">{v}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
