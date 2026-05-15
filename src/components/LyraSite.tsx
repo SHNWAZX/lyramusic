@@ -239,7 +239,7 @@ export function LyraSite() {
             {features.map(({ Icon, title, desc }, i) => (
               <Reveal
                 key={title}
-                delay={(i % 3) * 100}
+                delay={i * 120}
                 className="liquid-glass rounded-3xl p-5 transition-transform hover:scale-[1.02] sm:p-6"
               >
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10">
