@@ -363,8 +363,8 @@ export function LyraSite() {
 
 const SONG = {
   id: "OMPHhaJFPQo",
-  title: "Featured Track",
-  artist: "Now playing on Lyra",
+  title: "Baarish Mein Phir",
+  artist: "Saahel",
   thumb: "https://i.ytimg.com/vi/OMPHhaJFPQo/hqdefault.jpg",
   watchUrl: "https://youtu.be/OMPHhaJFPQo",
 };
