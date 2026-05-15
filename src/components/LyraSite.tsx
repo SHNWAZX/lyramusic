@@ -184,7 +184,7 @@ export function LyraSite() {
       </section>
 
       {/* FEATURES */}
-      <section className="bg-black px-5 py-16 sm:px-8 sm:py-24">
+      <section id="features" className="scroll-mt-20 bg-black px-5 py-16 sm:px-8 sm:py-24">
         <div className="mx-auto max-w-6xl">
           <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/50 sm:text-xs">
             Features
