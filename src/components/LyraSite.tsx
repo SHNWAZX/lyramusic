@@ -297,7 +297,7 @@ export function LyraSite() {
       {/* DOWNLOAD CTA */}
       <section id="download" className="scroll-mt-20 bg-black px-5 pb-16 sm:px-8 sm:pb-24">
         <div className="mx-auto max-w-5xl overflow-hidden rounded-3xl">
-          <div className="liquid-glass-strong relative rounded-3xl p-8 sm:p-14">
+          <Reveal className="liquid-glass-strong relative rounded-3xl p-8 sm:p-14">
             <div className="flex flex-col items-start gap-8 lg:flex-row lg:items-center lg:justify-between">
               <div className="max-w-xl">
                 <div className="liquid-glass inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs text-white/70">
