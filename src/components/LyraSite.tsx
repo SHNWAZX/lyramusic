@@ -213,7 +213,7 @@ export function LyraSite() {
       </section>
 
       {/* PREVIEW / now-playing mock */}
-      <section className="bg-black px-5 pb-16 sm:px-8 sm:pb-24">
+      <section id="preview" className="scroll-mt-20 bg-black px-5 pb-16 sm:px-8 sm:pb-24">
         <div className="mx-auto grid max-w-6xl items-center gap-8 lg:grid-cols-2">
           <div>
             <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/50 sm:text-xs">
