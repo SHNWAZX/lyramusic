@@ -84,16 +84,28 @@ export function LyraSite() {
                     lyra
                   </span>
                 </div>
+                <nav className="liquid-glass hidden items-center gap-1 rounded-full px-2 py-1.5 text-sm text-white/80 md:flex">
+                  <a href="#features" className="rounded-full px-3 py-1.5 transition-colors hover:text-white">Features</a>
+                  <a href="#preview" className="rounded-full px-3 py-1.5 transition-colors hover:text-white">Preview</a>
+                  <a href="#download" className="rounded-full px-3 py-1.5 transition-colors hover:text-white">Download</a>
+                  <a href={REPO_URL} target="_blank" rel="noreferrer" className="rounded-full px-3 py-1.5 transition-colors hover:text-white">GitHub</a>
+                </nav>
                 <div className="flex items-center gap-2">
                   <a
                     href={REPO_URL}
                     target="_blank"
                     rel="noreferrer"
-                    className="liquid-glass hidden h-10 w-10 items-center justify-center rounded-full text-white transition-transform hover:scale-105 sm:flex"
+                    className="liquid-glass hidden h-10 w-10 items-center justify-center rounded-full text-white transition-transform hover:scale-105 sm:flex md:hidden"
                   >
                     <Github className="h-4 w-4" />
                   </a>
-                  <button className="liquid-glass inline-flex items-center gap-2 rounded-full px-3 py-2 text-xs text-white/80 transition-transform hover:scale-105 sm:px-4 sm:text-sm">
+                  <a
+                    href={APK_URL}
+                    className="liquid-glass-strong hidden items-center gap-2 rounded-full px-4 py-2 text-sm text-white transition-transform hover:scale-105 md:inline-flex"
+                  >
+                    <Download className="h-4 w-4" /> Get App
+                  </a>
+                  <button className="liquid-glass inline-flex items-center gap-2 rounded-full px-3 py-2 text-xs text-white/80 transition-transform hover:scale-105 sm:px-4 sm:text-sm md:hidden">
                     <Menu className="h-4 w-4" /> Menu
                   </button>
                 </div>
@@ -103,13 +115,17 @@ export function LyraSite() {
               <div className="flex flex-1 flex-col items-center justify-center py-12 text-center">
                 <Logo size={72} />
                 <h1 className="mt-6 text-4xl font-medium tracking-[-0.05em] text-white sm:text-5xl md:text-6xl lg:text-7xl">
-                  Innovating the
+                  Your music,
                   <br />
-                  <em className="font-serif font-medium not-italic italic text-white/80">
-                    spirit of
+                  <em className="font-serif font-medium italic text-white/80">
+                    beautifully
                   </em>{" "}
-                  lyra music
+                  reimagined.
                 </h1>
+                <p className="mt-5 max-w-xl text-sm text-white/70 sm:text-base">
+                  Lyra is a free, open-source music player for Android — Material You,
+                  synced lyrics, offline library, and zero ads.
+                </p>
 
                 <a
                   href={APK_URL}
@@ -168,7 +184,7 @@ export function LyraSite() {
       </section>
 
       {/* FEATURES */}
-      <section className="bg-black px-5 py-16 sm:px-8 sm:py-24">
+      <section id="features" className="scroll-mt-20 bg-black px-5 py-16 sm:px-8 sm:py-24">
         <div className="mx-auto max-w-6xl">
           <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/50 sm:text-xs">
             Features
@@ -197,7 +213,7 @@ export function LyraSite() {
       </section>
 
       {/* PREVIEW / now-playing mock */}
-      <section className="bg-black px-5 pb-16 sm:px-8 sm:pb-24">
+      <section id="preview" className="scroll-mt-20 bg-black px-5 pb-16 sm:px-8 sm:pb-24">
         <div className="mx-auto grid max-w-6xl items-center gap-8 lg:grid-cols-2">
           <div>
             <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/50 sm:text-xs">
@@ -272,7 +288,7 @@ export function LyraSite() {
       </section>
 
       {/* DOWNLOAD CTA */}
-      <section className="bg-black px-5 pb-16 sm:px-8 sm:pb-24">
+      <section id="download" className="scroll-mt-20 bg-black px-5 pb-16 sm:px-8 sm:pb-24">
         <div className="mx-auto max-w-5xl overflow-hidden rounded-3xl">
           <div className="liquid-glass-strong relative rounded-3xl p-8 sm:p-14">
             <div className="flex flex-col items-start gap-8 lg:flex-row lg:items-center lg:justify-between">
