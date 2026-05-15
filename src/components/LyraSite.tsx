@@ -348,10 +348,10 @@ export function LyraSite() {
             <a href={REPO_URL} target="_blank" rel="noreferrer" className="hover:text-white">
               <Github className="h-4 w-4" />
             </a>
-            <a href="#" className="hover:text-white">
+            <a href="https://twitter.com/shnwazdev" target="_blank" rel="noreferrer" aria-label="Twitter" className="hover:text-white">
               <Twitter className="h-4 w-4" />
             </a>
-            <a href="#" className="hover:text-white">
+            <a href="https://instagram.com/sexyshnwaz" target="_blank" rel="noreferrer" aria-label="Instagram" className="hover:text-white">
               <Instagram className="h-4 w-4" />
             </a>
           </div>
