@@ -71,9 +71,9 @@ export function LyraSite() {
           className="absolute inset-0 z-0 h-full w-full object-cover"
         />
 
-        <div className="relative z-10 flex min-h-screen w-full flex-col lg:flex-row">
-          {/* LEFT */}
-          <div className="relative flex w-full flex-1 lg:w-[52%]">
+        <div className="relative z-10 flex min-h-screen w-full flex-col">
+          {/* HERO PANEL */}
+          <div className="relative flex w-full flex-1">
             <div className="liquid-glass-strong absolute inset-3 rounded-3xl sm:inset-4 lg:inset-6" />
             <div className="relative flex w-full flex-col p-5 sm:p-8 lg:p-12">
               {/* Nav */}
@@ -152,81 +152,6 @@ export function LyraSite() {
             </div>
           </div>
 
-          {/* RIGHT — desktop only */}
-          <div className="relative hidden w-[48%] flex-col gap-4 p-6 lg:flex">
-            <div className="flex items-center justify-between">
-              <div className="liquid-glass flex items-center gap-3 rounded-full px-4 py-2">
-                <a href="#" className="text-white transition-colors hover:text-white/80">
-                  <Twitter className="h-4 w-4" />
-                </a>
-                <a href="#" className="text-white transition-colors hover:text-white/80">
-                  <Linkedin className="h-4 w-4" />
-                </a>
-                <a href="#" className="text-white transition-colors hover:text-white/80">
-                  <Instagram className="h-4 w-4" />
-                </a>
-                <span className="mx-1 h-4 w-px bg-white/20" />
-                <a
-                  href={REPO_URL}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-white transition-colors hover:text-white/80"
-                >
-                  <ArrowRight className="h-4 w-4" />
-                </a>
-              </div>
-              <button className="liquid-glass flex h-10 w-10 items-center justify-center rounded-full text-white transition-transform hover:scale-105">
-                <Sparkles className="h-4 w-4" />
-              </button>
-            </div>
-
-            <div className="liquid-glass w-56 rounded-2xl p-4">
-              <h3 className="text-sm font-medium text-white">Enter our ecosystem</h3>
-              <p className="mt-1 text-xs text-white/60">
-                Join thousands of listeners shaping the next generation of mobile audio.
-              </p>
-            </div>
-
-            <div className="liquid-glass mt-auto rounded-[2.5rem] p-4">
-              <div className="grid grid-cols-2 gap-3">
-                <div className="liquid-glass rounded-3xl p-5">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10">
-                    <Wand2 className="h-4 w-4 text-white" />
-                  </div>
-                  <h4 className="mt-4 text-sm font-medium text-white">Processing</h4>
-                  <p className="mt-1 text-xs text-white/60">
-                    Real-time audio refinement on device.
-                  </p>
-                </div>
-                <div className="liquid-glass rounded-3xl p-5">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10">
-                    <BookOpen className="h-4 w-4 text-white" />
-                  </div>
-                  <h4 className="mt-4 text-sm font-medium text-white">Sound Archive</h4>
-                  <p className="mt-1 text-xs text-white/60">
-                    Every track, lyric, and playlist — searchable.
-                  </p>
-                </div>
-              </div>
-
-              <div className="liquid-glass mt-3 flex items-center gap-3 rounded-3xl p-3">
-                <div className="liquid-glass-strong flex h-16 w-24 shrink-0 items-center justify-center rounded-2xl">
-                  <Music2 className="h-6 w-6 text-white" />
-                </div>
-                <div className="min-w-0 flex-1">
-                  <h4 className="truncate text-sm font-medium text-white">
-                    Advanced Sound Sculpting
-                  </h4>
-                  <p className="truncate text-xs text-white/60">
-                    Shape tone, lyrics, and form with intent.
-                  </p>
-                </div>
-                <button className="liquid-glass flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-white transition-transform hover:scale-105">
-                  <Plus className="h-4 w-4" />
-                </button>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
