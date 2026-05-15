@@ -58,7 +58,35 @@ function Logo({ size = 32 }: { size?: number }) {
   );
 }
 
+const NAV_LINKS = [
+  { id: "features", label: "Features" },
+  { id: "preview", label: "Preview" },
+  { id: "download", label: "Download" },
+] as const;
+
 export function LyraSite() {
+  const [activeSection, setActiveSection] = useState<string>("");
+
+  useEffect(() => {
+    const sections = NAV_LINKS.map((l) => document.getElementById(l.id)).filter(
+      (el): el is HTMLElement => el !== null,
+    );
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible[0]) setActiveSection(visible[0].target.id);
+      },
+      { rootMargin: "-40% 0px -50% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] },
+    );
+
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <main className="relative w-full bg-black text-white">
       {/* HERO with looping video */}
