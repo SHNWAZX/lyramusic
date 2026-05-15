@@ -1,22 +1,20 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Hero } from "@/components/Hero";
-import { Features } from "@/components/Features";
-import { DownloadCTA } from "@/components/DownloadCTA";
+import { BionovaHero } from "@/components/BionovaHero";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Lyra Music — Material You music player for Android" },
+      { title: "BIONOVA — World-class biotech consulting" },
       {
         name: "description",
         content:
-          "Lyra Music is a clean, ad-free Material You music app for Android with search, offline downloads, lyrics, and Android Auto support.",
+          "BIONOVA partners with biotech founders and scientists to turn breakthrough science into resilient, fundable companies.",
       },
-      { property: "og:title", content: "Lyra Music — Material You music player" },
+      { property: "og:title", content: "BIONOVA — Biotech consulting" },
       {
         property: "og:description",
         content:
-          "Stream, download, and enjoy lyrics with a modern Jetpack Compose interface. Free and open source.",
+          "Consultants that empower biotech leaders. Book a strategy call with our partners.",
       },
     ],
   }),
@@ -25,11 +23,9 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <main className="bg-black">
-      <h1 className="sr-only">Lyra Music — Material You Android music player</h1>
-      <Hero />
-      <Features />
-      <DownloadCTA />
+    <main className="bg-background">
+      <h1 className="sr-only">BIONOVA — World-class consultants that empower biotech leaders</h1>
+      <BionovaHero />
     </main>
   );
 }
