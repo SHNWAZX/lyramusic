@@ -146,9 +146,6 @@ export function LyraSite() {
                   >
                     <Download className="h-4 w-4" /> Get App
                   </a>
-                  <button className="liquid-glass inline-flex items-center gap-2 rounded-full px-3 py-2 text-xs text-white/80 transition-transform hover:scale-105 sm:px-4 sm:text-sm md:hidden">
-                    <Menu className="h-4 w-4" /> Menu
-                  </button>
                 </div>
               </div>
 
