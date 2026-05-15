@@ -256,7 +256,7 @@ export function LyraSite() {
       {/* PREVIEW / now-playing mock */}
       <section id="preview" className="scroll-mt-20 bg-black px-5 pb-16 sm:px-8 sm:pb-24">
         <div className="mx-auto grid max-w-6xl items-center gap-8 lg:grid-cols-2">
-          <div>
+          <Reveal>
             <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/50 sm:text-xs">
               Now Playing
             </p>
@@ -285,10 +285,12 @@ export function LyraSite() {
                 Releases <ChevronRight className="h-4 w-4" />
               </a>
             </div>
-          </div>
+          </Reveal>
 
           {/* Phone mock - playable preview */}
-          <PhonePreview />
+          <Reveal delay={150}>
+            <PhonePreview />
+          </Reveal>
         </div>
       </section>
 
