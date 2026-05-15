@@ -112,10 +112,23 @@ export function LyraSite() {
                     lyra
                   </span>
                 </div>
-                <nav className="liquid-glass hidden items-center gap-1 rounded-full px-2 py-1.5 text-sm text-white/80 md:flex">
-                  <a href="#features" className="rounded-full px-3 py-1.5 transition-colors hover:text-white">Features</a>
-                  <a href="#preview" className="rounded-full px-3 py-1.5 transition-colors hover:text-white">Preview</a>
-                  <a href="#download" className="rounded-full px-3 py-1.5 transition-colors hover:text-white">Download</a>
+                <nav className="liquid-glass hidden items-center gap-1 rounded-full px-2 py-1.5 text-sm text-white/70 md:flex">
+                  {NAV_LINKS.map((l) => {
+                    const active = activeSection === l.id;
+                    return (
+                      <a
+                        key={l.id}
+                        href={`#${l.id}`}
+                        className={`rounded-full px-3 py-1.5 transition-all ${
+                          active
+                            ? "bg-white/15 text-white"
+                            : "hover:text-white"
+                        }`}
+                      >
+                        {l.label}
+                      </a>
+                    );
+                  })}
                   <a href={REPO_URL} target="_blank" rel="noreferrer" className="rounded-full px-3 py-1.5 transition-colors hover:text-white">GitHub</a>
                 </nav>
                 <div className="flex items-center gap-2">
