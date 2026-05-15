@@ -371,7 +371,31 @@ const SONG = {
 
 function PhonePreview() {
   const [playing, setPlaying] = useState(false);
+  const [started, setStarted] = useState(false);
   const [liked, setLiked] = useState(false);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+
+  const sendCommand = (func: "playVideo" | "pauseVideo") => {
+    iframeRef.current?.contentWindow?.postMessage(
+      JSON.stringify({ event: "command", func, args: [] }),
+      "*",
+    );
+  };
+
+  const togglePlay = () => {
+    if (!started) {
+      setStarted(true);
+      setPlaying(true);
+      return;
+    }
+    if (playing) {
+      sendCommand("pauseVideo");
+      setPlaying(false);
+    } else {
+      sendCommand("playVideo");
+      setPlaying(true);
+    }
+  };
 
   return (
     <div className="mx-auto w-full max-w-xs sm:max-w-sm">
@@ -383,36 +407,47 @@ function PhonePreview() {
           </div>
 
           <div className="mt-5 flex items-center justify-center">
-            <div className="relative h-44 w-44 overflow-hidden rounded-3xl">
-              {playing ? (
-                <iframe
-                  className="absolute inset-0 h-full w-full"
-                  src={`https://www.youtube.com/embed/${SONG.id}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
-                  title={SONG.title}
-                  allow="autoplay; encrypted-media; picture-in-picture"
-                  allowFullScreen
-                />
-              ) : (
-                <button
-                  type="button"
-                  onClick={() => setPlaying(true)}
-                  className="group relative block h-full w-full"
-                  aria-label={`Play ${SONG.title}`}
-                >
-                  <img
-                    src={SONG.thumb}
-                    alt={SONG.title}
-                    className="h-full w-full object-cover"
-                  />
-                  <span className="absolute inset-0 flex items-center justify-center bg-black/30 transition-colors group-hover:bg-black/40">
-                    <span className="liquid-glass-strong flex h-12 w-12 items-center justify-center rounded-full">
-                      <Play className="h-5 w-5 fill-white" />
+            <button
+              type="button"
+              onClick={togglePlay}
+              className="group relative h-44 w-44 overflow-hidden rounded-3xl"
+              aria-label={playing ? "Pause" : `Play ${SONG.title}`}
+            >
+              <img
+                src={SONG.thumb}
+                alt={SONG.title}
+                className="h-full w-full object-cover"
+              />
+              <span
+                className={`absolute inset-0 flex items-center justify-center bg-black/30 transition-opacity ${
+                  playing ? "opacity-0 group-hover:opacity-100" : "opacity-100"
+                }`}
+              >
+                <span className="liquid-glass-strong flex h-12 w-12 items-center justify-center rounded-full">
+                  {playing ? (
+                    <span className="flex h-4 gap-1">
+                      <span className="block h-full w-1.5 rounded-sm bg-white" />
+                      <span className="block h-full w-1.5 rounded-sm bg-white" />
                     </span>
-                  </span>
-                </button>
-              )}
-            </div>
+                  ) : (
+                    <Play className="h-5 w-5 fill-white" />
+                  )}
+                </span>
+              </span>
+            </button>
           </div>
+
+          {/* Hidden YouTube player — audio only, no visible YouTube UI */}
+          {started && (
+            <iframe
+              ref={iframeRef}
+              className="pointer-events-none absolute h-px w-px opacity-0"
+              style={{ left: "-9999px", top: "-9999px" }}
+              src={`https://www.youtube.com/embed/${SONG.id}?autoplay=1&controls=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1`}
+              title={SONG.title}
+              allow="autoplay; encrypted-media"
+            />
+          )}
 
           <div className="mt-5 text-center">
             <p className="truncate text-base font-medium">{SONG.title}</p>
@@ -452,7 +487,7 @@ function PhonePreview() {
             </button>
             <button
               type="button"
-              onClick={() => setPlaying((v) => !v)}
+              onClick={togglePlay}
               className="liquid-glass-strong flex h-14 w-14 items-center justify-center rounded-full transition-transform hover:scale-105"
               aria-label={playing ? "Pause" : "Play"}
             >
