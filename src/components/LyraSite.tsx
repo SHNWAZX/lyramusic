@@ -224,19 +224,22 @@ export function LyraSite() {
       {/* FEATURES */}
       <section id="features" className="scroll-mt-20 bg-black px-5 py-16 sm:px-8 sm:py-24">
         <div className="mx-auto max-w-6xl">
-          <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/50 sm:text-xs">
-            Features
-          </p>
-          <h2 className="mt-3 max-w-2xl text-balance text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl">
-            Everything a music app should be —
-            <br className="hidden sm:inline" />{" "}
-            <em className="font-serif italic text-white/70">nothing it shouldn't.</em>
-          </h2>
+          <Reveal>
+            <p className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/50 sm:text-xs">
+              Features
+            </p>
+            <h2 className="mt-3 max-w-2xl text-balance text-3xl font-medium tracking-tight sm:text-4xl md:text-5xl">
+              Everything a music app should be —
+              <br className="hidden sm:inline" />{" "}
+              <em className="font-serif italic text-white/70">nothing it shouldn't.</em>
+            </h2>
+          </Reveal>
 
           <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {features.map(({ Icon, title, desc }) => (
-              <div
+            {features.map(({ Icon, title, desc }, i) => (
+              <Reveal
                 key={title}
+                delay={(i % 3) * 100}
                 className="liquid-glass rounded-3xl p-5 transition-transform hover:scale-[1.02] sm:p-6"
               >
                 <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10">
@@ -244,7 +247,7 @@ export function LyraSite() {
                 </div>
                 <h3 className="mt-5 text-base font-medium sm:text-lg">{title}</h3>
                 <p className="mt-1.5 text-sm leading-relaxed text-white/60">{desc}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
