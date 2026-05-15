@@ -84,16 +84,28 @@ export function LyraSite() {
                     lyra
                   </span>
                 </div>
+                <nav className="liquid-glass hidden items-center gap-1 rounded-full px-2 py-1.5 text-sm text-white/80 md:flex">
+                  <a href="#features" className="rounded-full px-3 py-1.5 transition-colors hover:text-white">Features</a>
+                  <a href="#preview" className="rounded-full px-3 py-1.5 transition-colors hover:text-white">Preview</a>
+                  <a href="#download" className="rounded-full px-3 py-1.5 transition-colors hover:text-white">Download</a>
+                  <a href={REPO_URL} target="_blank" rel="noreferrer" className="rounded-full px-3 py-1.5 transition-colors hover:text-white">GitHub</a>
+                </nav>
                 <div className="flex items-center gap-2">
                   <a
                     href={REPO_URL}
                     target="_blank"
                     rel="noreferrer"
-                    className="liquid-glass hidden h-10 w-10 items-center justify-center rounded-full text-white transition-transform hover:scale-105 sm:flex"
+                    className="liquid-glass hidden h-10 w-10 items-center justify-center rounded-full text-white transition-transform hover:scale-105 sm:flex md:hidden"
                   >
                     <Github className="h-4 w-4" />
                   </a>
-                  <button className="liquid-glass inline-flex items-center gap-2 rounded-full px-3 py-2 text-xs text-white/80 transition-transform hover:scale-105 sm:px-4 sm:text-sm">
+                  <a
+                    href={APK_URL}
+                    className="liquid-glass-strong hidden items-center gap-2 rounded-full px-4 py-2 text-sm text-white transition-transform hover:scale-105 md:inline-flex"
+                  >
+                    <Download className="h-4 w-4" /> Get App
+                  </a>
+                  <button className="liquid-glass inline-flex items-center gap-2 rounded-full px-3 py-2 text-xs text-white/80 transition-transform hover:scale-105 sm:px-4 sm:text-sm md:hidden">
                     <Menu className="h-4 w-4" /> Menu
                   </button>
                 </div>
