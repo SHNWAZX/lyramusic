@@ -9,6 +9,7 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import { ContentProtection } from "@/components/ContentProtection";
 
 function NotFoundComponent() {
   return (
