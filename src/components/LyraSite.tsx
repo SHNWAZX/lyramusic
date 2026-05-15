@@ -71,9 +71,9 @@ export function LyraSite() {
           className="absolute inset-0 z-0 h-full w-full object-cover"
         />
 
-        <div className="relative z-10 flex min-h-screen w-full flex-col lg:flex-row">
-          {/* LEFT */}
-          <div className="relative flex w-full flex-1 lg:w-[52%]">
+        <div className="relative z-10 flex min-h-screen w-full flex-col">
+          {/* HERO PANEL */}
+          <div className="relative flex w-full flex-1">
             <div className="liquid-glass-strong absolute inset-3 rounded-3xl sm:inset-4 lg:inset-6" />
             <div className="relative flex w-full flex-col p-5 sm:p-8 lg:p-12">
               {/* Nav */}
