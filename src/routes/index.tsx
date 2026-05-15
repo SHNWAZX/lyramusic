@@ -1,20 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { BionovaHero } from "@/components/BionovaHero";
+import { BloomSection } from "@/components/BloomSection";
+import { FramelixSection } from "@/components/FramelixSection";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "BIONOVA — World-class biotech consulting" },
+      { title: "BIONOVA · Bloom · Framelix 3D" },
       {
         name: "description",
         content:
-          "BIONOVA partners with biotech founders and scientists to turn breakthrough science into resilient, fundable companies.",
-      },
-      { property: "og:title", content: "BIONOVA — Biotech consulting" },
-      {
-        property: "og:description",
-        content:
-          "Consultants that empower biotech leaders. Book a strategy call with our partners.",
+          "A multi-brand showcase: BIONOVA biotech consulting, Bloom AI floral design, and Framelix 3D cinematic motion studio.",
       },
     ],
   }),
@@ -23,9 +19,11 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <main className="bg-background">
-      <h1 className="sr-only">BIONOVA — World-class consultants that empower biotech leaders</h1>
+    <main>
+      <h1 className="sr-only">BIONOVA, Bloom, and Framelix 3D — combined showcase</h1>
       <BionovaHero />
+      <BloomSection />
+      <FramelixSection />
     </main>
   );
 }
