@@ -360,3 +360,121 @@ export function LyraSite() {
     </main>
   );
 }
+
+const SONG = {
+  id: "OMPHhaJFPQo",
+  title: "Featured Track",
+  artist: "Now playing on Lyra",
+  thumb: "https://i.ytimg.com/vi/OMPHhaJFPQo/hqdefault.jpg",
+  watchUrl: "https://youtu.be/OMPHhaJFPQo",
+};
+
+function PhonePreview() {
+  const [playing, setPlaying] = useState(false);
+  const [liked, setLiked] = useState(false);
+
+  return (
+    <div className="mx-auto w-full max-w-xs sm:max-w-sm">
+      <div className="liquid-glass-strong rounded-[2.5rem] p-4">
+        <div className="liquid-glass rounded-[2rem] p-5">
+          <div className="flex items-center justify-between text-[10px] text-white/60">
+            <span>9:41</span>
+            <span>Lyra</span>
+          </div>
+
+          <div className="mt-5 flex items-center justify-center">
+            <div className="relative h-44 w-44 overflow-hidden rounded-3xl">
+              {playing ? (
+                <iframe
+                  className="absolute inset-0 h-full w-full"
+                  src={`https://www.youtube.com/embed/${SONG.id}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
+                  title={SONG.title}
+                  allow="autoplay; encrypted-media; picture-in-picture"
+                  allowFullScreen
+                />
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setPlaying(true)}
+                  className="group relative block h-full w-full"
+                  aria-label={`Play ${SONG.title}`}
+                >
+                  <img
+                    src={SONG.thumb}
+                    alt={SONG.title}
+                    className="h-full w-full object-cover"
+                  />
+                  <span className="absolute inset-0 flex items-center justify-center bg-black/30 transition-colors group-hover:bg-black/40">
+                    <span className="liquid-glass-strong flex h-12 w-12 items-center justify-center rounded-full">
+                      <Play className="h-5 w-5 fill-white" />
+                    </span>
+                  </span>
+                </button>
+              )}
+            </div>
+          </div>
+
+          <div className="mt-5 text-center">
+            <p className="truncate text-base font-medium">{SONG.title}</p>
+            <p className="truncate text-xs text-white/60">{SONG.artist}</p>
+          </div>
+
+          <div className="mt-4 h-1 w-full overflow-hidden rounded-full bg-white/10">
+            <div
+              className={`h-full rounded-full bg-white transition-all duration-700 ${
+                playing ? "w-3/5" : "w-1/4"
+              }`}
+            />
+          </div>
+          <div className="mt-3 flex items-center justify-between text-[10px] text-white/50">
+            <span>{playing ? "0:08" : "0:00"}</span>
+            <a
+              href={SONG.watchUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-white"
+            >
+              Open on YouTube
+            </a>
+          </div>
+
+          <div className="mt-5 flex items-center justify-center gap-5">
+            <button
+              type="button"
+              onClick={() => setLiked((v) => !v)}
+              className="liquid-glass flex h-10 w-10 items-center justify-center rounded-full transition-transform hover:scale-105"
+              aria-pressed={liked}
+              aria-label="Like"
+            >
+              <Heart
+                className={`h-4 w-4 ${liked ? "fill-white text-white" : ""}`}
+              />
+            </button>
+            <button
+              type="button"
+              onClick={() => setPlaying((v) => !v)}
+              className="liquid-glass-strong flex h-14 w-14 items-center justify-center rounded-full transition-transform hover:scale-105"
+              aria-label={playing ? "Pause" : "Play"}
+            >
+              {playing ? (
+                <span className="flex h-4 gap-1">
+                  <span className="block h-full w-1.5 rounded-sm bg-white" />
+                  <span className="block h-full w-1.5 rounded-sm bg-white" />
+                </span>
+              ) : (
+                <Play className="h-5 w-5 fill-white" />
+              )}
+            </button>
+            <button
+              type="button"
+              className="liquid-glass flex h-10 w-10 items-center justify-center rounded-full transition-transform hover:scale-105"
+              aria-label="Lyrics"
+            >
+              <Mic2 className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
