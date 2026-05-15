@@ -1,29 +1,21 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { BionovaHero } from "@/components/BionovaHero";
-import { BloomSection } from "@/components/BloomSection";
-import { FramelixSection } from "@/components/FramelixSection";
+import { LyraSite } from "@/components/LyraSite";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "BIONOVA · Bloom · Framelix 3D" },
+      { title: "Lyra Music — Material You music player for Android" },
       {
         name: "description",
         content:
-          "A multi-brand showcase: BIONOVA biotech consulting, Bloom AI floral design, and Framelix 3D cinematic motion studio.",
+          "Free, open-source Material You music app for Android. Search, offline downloads, lyrics, and Android Auto support.",
+      },
+      { property: "og:title", content: "Lyra Music — Material You music player" },
+      {
+        property: "og:description",
+        content: "Stream, download, and enjoy lyrics with a modern Jetpack Compose interface.",
       },
     ],
   }),
-  component: Index,
+  component: () => <LyraSite />,
 });
-
-function Index() {
-  return (
-    <main>
-      <h1 className="sr-only">BIONOVA, Bloom, and Framelix 3D — combined showcase</h1>
-      <BionovaHero />
-      <BloomSection />
-      <FramelixSection />
-    </main>
-  );
-}
