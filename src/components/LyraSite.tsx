@@ -287,44 +287,8 @@ export function LyraSite() {
             </div>
           </div>
 
-          {/* Phone mock */}
-          <div className="mx-auto w-full max-w-xs sm:max-w-sm">
-            <div className="liquid-glass-strong rounded-[2.5rem] p-4">
-              <div className="liquid-glass rounded-[2rem] p-5">
-                <div className="flex items-center justify-between text-[10px] text-white/60">
-                  <span>9:41</span>
-                  <span>Lyra</span>
-                </div>
-                <div className="mt-5 flex items-center justify-center">
-                  <div className="liquid-glass-strong flex h-40 w-40 items-center justify-center rounded-3xl">
-                    <Music2 className="h-12 w-12 text-white/80" />
-                  </div>
-                </div>
-                <div className="mt-5 text-center">
-                  <p className="text-base font-medium">Drift</p>
-                  <p className="text-xs text-white/60">Marcus Aurelio · Realm</p>
-                </div>
-                <div className="mt-4 h-1 w-full rounded-full bg-white/10">
-                  <div className="h-full w-2/5 rounded-full bg-white" />
-                </div>
-                <div className="mt-3 flex items-center justify-between text-[10px] text-white/50">
-                  <span>1:42</span>
-                  <span>4:08</span>
-                </div>
-                <div className="mt-5 flex items-center justify-center gap-5">
-                  <button className="liquid-glass flex h-10 w-10 items-center justify-center rounded-full">
-                    <Heart className="h-4 w-4" />
-                  </button>
-                  <button className="liquid-glass-strong flex h-14 w-14 items-center justify-center rounded-full">
-                    <Play className="h-5 w-5 fill-white" />
-                  </button>
-                  <button className="liquid-glass flex h-10 w-10 items-center justify-center rounded-full">
-                    <Mic2 className="h-4 w-4" />
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+          {/* Phone mock - playable preview */}
+          <PhonePreview />
         </div>
       </section>
 
