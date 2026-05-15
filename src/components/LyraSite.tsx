@@ -150,17 +150,16 @@ export function LyraSite() {
               </div>
 
               {/* Center hero */}
-              <div className="flex flex-1 flex-col items-center justify-center py-12 text-center">
+              <div className="flex flex-1 flex-col items-center justify-center py-12 text-center [text-shadow:0_2px_24px_rgba(0,0,0,0.55)]">
                 <Logo size={72} />
-                <h1 className="mt-6 text-4xl font-medium tracking-[-0.05em] text-white sm:text-5xl md:text-6xl lg:text-7xl">
-                  Your music,
-                  <br />
-                  <em className="font-serif font-medium italic text-white/80">
+                <h1 className="mt-6 text-balance text-4xl font-medium leading-[1.05] tracking-[-0.04em] text-white sm:text-5xl md:text-6xl lg:text-7xl">
+                  Your music,{" "}
+                  <em className="font-serif font-medium italic text-white/85">
                     beautifully
                   </em>{" "}
                   reimagined.
                 </h1>
-                <p className="mt-5 max-w-xl text-sm text-white/70 sm:text-base">
+                <p className="mt-5 max-w-xl text-balance text-sm text-white/80 sm:text-base">
                   Lyra is a free, open-source music player for Android — Material You,
                   synced lyrics, offline library, and zero ads.
                 </p>
