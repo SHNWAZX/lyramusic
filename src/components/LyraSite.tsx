@@ -21,6 +21,7 @@ import {
   Heart,
   Play,
 } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const VIDEO =
   "https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260315_073750_51473149-4350-4920-ae24-c8214286f323.mp4";
@@ -57,7 +58,35 @@ function Logo({ size = 32 }: { size?: number }) {
   );
 }
 
+const NAV_LINKS = [
+  { id: "features", label: "Features" },
+  { id: "preview", label: "Preview" },
+  { id: "download", label: "Download" },
+] as const;
+
 export function LyraSite() {
+  const [activeSection, setActiveSection] = useState<string>("");
+
+  useEffect(() => {
+    const sections = NAV_LINKS.map((l) => document.getElementById(l.id)).filter(
+      (el): el is HTMLElement => el !== null,
+    );
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible[0]) setActiveSection(visible[0].target.id);
+      },
+      { rootMargin: "-40% 0px -50% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] },
+    );
+
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <main className="relative w-full bg-black text-white">
       {/* HERO with looping video */}
@@ -74,7 +103,6 @@ export function LyraSite() {
         <div className="relative z-10 flex min-h-screen w-full flex-col">
           {/* HERO PANEL */}
           <div className="relative flex w-full flex-1">
-            <div className="liquid-glass-strong absolute inset-3 rounded-3xl sm:inset-4 lg:inset-6" />
             <div className="relative flex w-full flex-col p-5 sm:p-8 lg:p-12">
               {/* Nav */}
               <div className="flex items-center justify-between">
@@ -84,10 +112,23 @@ export function LyraSite() {
                     lyra
                   </span>
                 </div>
-                <nav className="liquid-glass hidden items-center gap-1 rounded-full px-2 py-1.5 text-sm text-white/80 md:flex">
-                  <a href="#features" className="rounded-full px-3 py-1.5 transition-colors hover:text-white">Features</a>
-                  <a href="#preview" className="rounded-full px-3 py-1.5 transition-colors hover:text-white">Preview</a>
-                  <a href="#download" className="rounded-full px-3 py-1.5 transition-colors hover:text-white">Download</a>
+                <nav className="liquid-glass hidden items-center gap-1 rounded-full px-2 py-1.5 text-sm text-white/70 md:flex">
+                  {NAV_LINKS.map((l) => {
+                    const active = activeSection === l.id;
+                    return (
+                      <a
+                        key={l.id}
+                        href={`#${l.id}`}
+                        className={`rounded-full px-3 py-1.5 transition-all ${
+                          active
+                            ? "bg-white/15 text-white"
+                            : "hover:text-white"
+                        }`}
+                      >
+                        {l.label}
+                      </a>
+                    );
+                  })}
                   <a href={REPO_URL} target="_blank" rel="noreferrer" className="rounded-full px-3 py-1.5 transition-colors hover:text-white">GitHub</a>
                 </nav>
                 <div className="flex items-center gap-2">
